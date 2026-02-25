@@ -332,7 +332,7 @@ document.querySelectorAll('.category-btn').forEach(btn => {
     });
 });
 
-// ==================== Portfolio Section ====================
+// ==================== Portfolio Section - Horizontal Scroll ====================
 function loadPortfolio() {
     const portfolioGrid = document.getElementById('portfolioGrid');
     if (!portfolioGrid) return;
@@ -343,8 +343,7 @@ function loadPortfolio() {
     for (let i = 1; i <= 6; i++) {
         const portfolioItem = document.createElement('div');
         portfolioItem.className = 'portfolio-item';
-        portfolioItem.style.animationDelay = ((i - 1) * 0.1) + 's';
-        portfolioItem.innerHTML = `<img src="images/images_reception/${i}.jpg" alt="تصميم حديث ${i}" onerror="this.src='https://via.placeholder.com/400x300?text=تصميم+${i}'">`
+        portfolioItem.innerHTML = `<img src="images/images_reception/${i}.jpg" alt="تصميم حديث ${i}" onerror="this.src='https://via.placeholder.com/320x280?text=تصميم+${i}'">`
         portfolioGrid.appendChild(portfolioItem);
     }
 }
