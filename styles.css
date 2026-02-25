@@ -449,9 +449,9 @@ header {
     grid-column: 1 / -1;
 }
 
-/* ==================== Portfolio Section ==================== */
+/* ==================== Portfolio Section - Horizontal Scroll ==================== */
 .portfolio-section {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 60px auto;
     padding: 0 20px;
 }
@@ -478,39 +478,52 @@ header {
     background: linear-gradient(to right, var(--primary), var(--secondary));
 }
 
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
+/* Portfolio Horizontal Scroll */
+.portfolio-wrapper {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.portfolio-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 15px 0;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) #f0f0f0;
+}
+
+.portfolio-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.portfolio-scroll::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+
+.portfolio-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    border-radius: 10px;
 }
 
 .portfolio-item {
+    flex: 0 0 320px;
+    height: 280px;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-    animation: fadeInUp 0.6s ease-out forwards;
-    opacity: 0;
     background: white;
+    cursor: grab;
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.portfolio-item:active {
+    cursor: grabbing;
 }
-
-.portfolio-item:nth-child(1) { animation-delay: 0.1s; }
-.portfolio-item:nth-child(2) { animation-delay: 0.2s; }
-.portfolio-item:nth-child(3) { animation-delay: 0.3s; }
-.portfolio-item:nth-child(4) { animation-delay: 0.4s; }
-.portfolio-item:nth-child(5) { animation-delay: 0.5s; }
-.portfolio-item:nth-child(6) { animation-delay: 0.6s; }
 
 .portfolio-item:hover {
     transform: translateY(-10px);
@@ -519,14 +532,14 @@ header {
 
 .portfolio-item img {
     width: 100%;
-    height: 250px;
+    height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.3s ease;
 }
 
 .portfolio-item:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 /* ==================== Testimonials Section ==================== */
@@ -721,6 +734,17 @@ header {
     }
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
@@ -764,8 +788,9 @@ header {
         font-size: 24px;
     }
 
-    .portfolio-grid {
-        grid-template-columns: 1fr;
+    .portfolio-item {
+        flex: 0 0 280px;
+        height: 240px;
     }
 
     .categories-buttons {
@@ -825,6 +850,11 @@ header {
 
     .btn, .submit-btn {
         font-size: 14px;
+    }
+
+    .portfolio-item {
+        flex: 0 0 240px;
+        height: 200px;
     }
 }
 
